@@ -9,6 +9,7 @@ let urlImgPokemon = ref(
 let pokemonUrl = reactive(ref());
 let pokemons = reactive(ref());
 let searchPokemon = ref("");
+
 onMounted(() => {
   fetch("https://pokeapi.co/api/v2/pokemon?limit=151&offset=0")
     .then((res) => res.json())
@@ -25,16 +26,33 @@ const filterPokemon = computed(() => {
 });
 
 const selectPokemon = async (pokemon) => {
-  fetch(pokemon.url)
+  await fetch(pokemon.url)
     .then((res) => res.json())
     .then((res) => (pokemonUrl.value = res));
-  console.log(pokemonUrl.value);
+  const modal = document.getElementById("cardInfo");
+  modal.classList.add("abrir");
+
+  modal.addEventListener("click", (e) => {
+    if (e.target.id == "close" || e.target.id == "cardInfo") {
+      modal.classList.remove("abrir");
+    }
+  });
 };
 </script>
 
 <template>
   <div class="content-main">
-    <div class="conteiner">
+    <div>
+      <CardInfo
+        :name="pokemonUrl?.name"
+        :height="pokemonUrl?.height"
+        :weight="pokemonUrl?.weight"
+        :id="pokemonUrl?.id"
+        :types="pokemonUrl?.types[0].type.name"
+        :img="pokemonUrl?.sprites.other.dream_world.front_default"
+      />
+    </div>
+    <div class="conteiner" id="listPokemon">
       <img
         alt="Pokedex"
         class="card-qual-pokemon"
@@ -42,11 +60,6 @@ const selectPokemon = async (pokemon) => {
         height="400px"
       />
       <div class="card-procurar-pokemon">
-        <div>
-      <CardInfo 
-      :name="pokemonUrl?.name"
-      />
-    </div>
         <h2>Procurando um pokémon?</h2>
         <input
           v-model="searchPokemon"
@@ -62,12 +75,12 @@ const selectPokemon = async (pokemon) => {
             :id="pokemon.url.split('/')[6]"
             :name="pokemon.name"
             :urlImgPokemon="urlImgPokemon + pokemon.url.split('/')[6] + '.svg'"
+            
             @click="selectPokemon(pokemon)"
           />
         </div>
       </div>
     </div>
-   
   </div>
 </template>
 
@@ -83,6 +96,7 @@ const selectPokemon = async (pokemon) => {
   gap: 40px;
   flex-wrap: wrap;
 }
+
 .content-main {
   height: calc(100vh - 72px);
   display: flex;
@@ -102,9 +116,21 @@ const selectPokemon = async (pokemon) => {
 .list-pokemons {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
+  gap: 4px;
   overflow-y: scroll;
   height: 260px;
+}
+
+.list-pokemons::-webkit-scrollbar {
+  width: 10px;
+  background-color: #cfcfcf;
+  border-radius: 4px;
+}
+
+.list-pokemons::-webkit-scrollbar-thumb {
+  background-color: #6c6c6c;
+  height: 40px;
+  border-radius: 4px;
 }
 
 .search {

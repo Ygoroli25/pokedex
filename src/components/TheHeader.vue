@@ -10,7 +10,10 @@
         height="70px"
       />
       <select name="idioma" id="">
-        <option value="Idiomas">Idiomas</option>
+        <option selected disabled>Idiomas</option>
+        <option value="Idiomas">Português</option>
+        <option value="Idiomas">Inglês</option>
+        <option value="Idiomas">Espanhol</option>
       </select>
     </div>
     <img
@@ -47,11 +50,19 @@
   left: calc(50% - 30px);
 }
 
+select{
+  background-color: #c8c8c8;
+}
+
 select {
   padding: 8px;
   background-color: transparent;
   color: #fff;
   border-radius: 4px;
   border-color: #fff;
+}
+
+option{
+  background-color: #c8c8c8;
 }
 </style>
