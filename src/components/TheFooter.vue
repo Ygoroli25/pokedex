@@ -3,7 +3,7 @@
 <template>
   <div class="footer">
     <div class="conteiner-footer">
-      <img src="../assets/meia-bola.svg" alt="" width="60px" height="60px" />
+      <img src="../assets/imgs/meia-bola.svg" alt="" width="60px" height="60px" />
       <p>
         Desenvolvido por
         <a href="https://github.com/Ygoroli25 " target="_bank"

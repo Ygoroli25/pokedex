@@ -5,7 +5,7 @@
     <div class="conteiner-header">
       <img
         alt="Pokedex"
-        src="../assets/Pok-dex-15-04-2024.png"
+        src="../assets/imgs/Pok-dex-15-04-2024.png"
         width="200px"
         height="70px"
       />
@@ -19,7 +19,7 @@
     <img
       alt="Pokedex"
       class="bola-pokebola"
-      src="../assets/bola_pokebola.svg"
+      src="../assets/imgs/bola_pokebola.svg"
       width="60px"
       height="60px"
     />
