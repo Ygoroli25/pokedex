@@ -59,7 +59,7 @@ const selectPokemon = async (pokemon) => {
               alt="Cor do Tipo"
             />
             <img
-              class="img-pokemon-main"
+              class="img-pokemon-main animate__animated animate__bounceIn"
               :src="pokemonUrl?.sprites.other.dream_world.front_default"
               alt="pokemon"
             />
@@ -116,7 +116,7 @@ const selectPokemon = async (pokemon) => {
               />
             </button>
             <section class="info-indices">
-              <h4>Games indices</h4>
+              <h4>Game indices</h4>
               <span class="indices">
                 <div
                   v-for="(version, index) in pokemonUrl?.game_indices"
@@ -127,22 +127,7 @@ const selectPokemon = async (pokemon) => {
               </span>
             </section>
             <hr />
-            <section class="info-evolutions">
-              <h4>Evoluções</h4>
-              <span class="evolution">
-                <div
-                  v-for="evolution in species?.evolution_chain"
-                  :key="evolution"
-                >
-                  <img src="../assets/025.png" alt="Evolução" width="80px" />
-                  
-                  <p>{{ evolution.split("/")[6] }}</p>
-                </div>
-              </span>
-            </section>
-          </section>
-        </div>
-        <section class="info-sprites">
+            <section class="info-sprites">
           <div
             class="sprite"
             v-for="(sprites, index) in pokemonUrl?.sprites"
@@ -156,6 +141,9 @@ const selectPokemon = async (pokemon) => {
             />
           </div>
         </section>
+          </section>
+        </div>
+ 
       </div>
     </section>
 
@@ -168,6 +156,11 @@ const selectPokemon = async (pokemon) => {
         height="400px"
       />
       <div class="card-procurar-pokemon">
+        <img
+        alt="Pokedex"
+        class="pokebola"
+        src="../assets/imgs/pokebola.png"
+      />
         <h2>Procurando um pokémon?</h2>
         <input
           v-model="searchPokemon"
@@ -183,7 +176,7 @@ const selectPokemon = async (pokemon) => {
             :key="pokemon.name"
             @click="selectPokemon(pokemon)"
           >
-            <img
+            <img class="img-animation"
               :src="urlImgPokemon + pokemon.url.split('/')[6] + '.svg'"
               alt=""
               width="80px"
@@ -225,12 +218,19 @@ const selectPokemon = async (pokemon) => {
 
 /* card search Pokemon */
 .card-procurar-pokemon {
+  position: relative;
   padding: 20px 40px;
   width: 400px;
   max-height: 400px;
   background-color: #f2f2f2;
   border-radius: 20px;
   flex: 1;
+}
+
+.pokebola{
+  position: absolute;
+  top: -60px;
+  right: -60px;
 }
 
 .list-pokemons {
@@ -265,6 +265,18 @@ const selectPokemon = async (pokemon) => {
   text-transform: capitalize;
   margin: 4px;
   cursor: pointer;
+}
+
+.card-list:hover {
+  background-color: #E6E6E6;
+}
+
+.card-list img{
+  padding: 3px;
+}
+
+.card-list:hover img{
+  padding: 0;
 }
 
 .search {
@@ -309,6 +321,14 @@ const selectPokemon = async (pokemon) => {
   height: 40px;
 }
 
+.img-pokemon-main {
+  position: absolute;
+  right: -20px;
+  top: -60px;
+  width: 160px;
+  height: 160px;
+}
+
 .info-secondary {
   padding: 10px 20px 20px;
   width: 400px;
@@ -323,13 +343,6 @@ const selectPokemon = async (pokemon) => {
   gap: 20px;
 }
 
-.img-pokemon-main {
-  position: absolute;
-  right: -20px;
-  top: -60px;
-  width: 160px;
-  height: 160px;
-}
 .info-conteiner {
   display: flex;
   flex-direction: column;
@@ -393,21 +406,19 @@ const selectPokemon = async (pokemon) => {
 .info-sprites {
   max-height: 400px;
   display: flex;
-  flex-direction: column;
   flex-wrap: nowrap;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: hidden;
   gap: 0px;
 }
 
 .info-sprites::-webkit-scrollbar {
-  width: 10px;
+  height: 10px;
   background-color: #cfcfcf;
   border-radius: 4px;
 }
 
 .info-sprites::-webkit-scrollbar-thumb {
-  background-color: #666666;
+  background-color: #141414;
   border-radius: 4px;
 }
 
@@ -423,18 +434,6 @@ const selectPokemon = async (pokemon) => {
 .sprite img {
   padding: 8px;
   width: 100px;
-}
-
-.evolution {
-  display: flex;
-  gap: 20px;
-}
-.evolution div {
-  margin-top: 10px;
-  padding: 10px;
-  background-color: #3d3d3d;
-  border-radius: 4px;
-  text-align: center;
 }
 
 .close {

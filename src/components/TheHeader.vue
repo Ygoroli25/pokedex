@@ -9,12 +9,6 @@
         width="200px"
         height="70px"
       />
-      <select name="idioma" id="">
-        <option selected disabled>Idiomas</option>
-        <option value="Idiomas">Português</option>
-        <option value="Idiomas">Inglês</option>
-        <option value="Idiomas">Espanhol</option>
-      </select>
     </div>
     <img
       alt="Pokedex"
