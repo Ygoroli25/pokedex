@@ -25,7 +25,7 @@ A Pokédex é uma aplicação web desenvolvida com Vue 3 utilizando Vite, que co
 
 ## Site e imagens do Projeto 
 
-
+https://pokedex-fawn-kappa.vercel.app/
 
 ![Captura de tela 2024-04-21 155652](https://github.com/Ygoroli25/pokedex/assets/111092853/b2fe54a3-b406-4b75-bb03-d38d063815e4)
 
